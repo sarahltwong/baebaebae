@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<title>Quiz</title>
+<body>
+<h1>Capitals of the World</h1>
+<p>Fill in as many capitals as you can then hit "Done"!</p>
+
+<form id="quiz">
+<!--Submit button-->
+<input onclick="gradeTest()" name="submitQuiz" type="button" value="Done!"/>
+<br></br>
+<!--Quiz-->
+<table border="1" cellspacing="0" cellpadding="5">
+	<tbody>
+		<tr>
+			<td>Australia</td>
+			<td><input id="q1" maxlength="30" name="q1" size="30" type="text" /></td>
+		</tr>
+	</tbody>
+</form>
+
+<script>
+//Check test answers
+function gradeTest() {
+     var totalQuestions = 1;
+     var correctAnswers = 0;
+	 var alertText
+
+	 var a1 = document.getElementById('q1').value.toLowerCase();
+     if(a1 == 'canberra') {correctAnswers++;}
+	 
+//Provide score
+	if(correctAnswers == totalQuestions) {
+		alertText = "Congratulations! You got all the questions right!";
+	}
+	else {
+		alertText = "You got " + correctAnswers + " out of " + totalQuestions + " correct!";
+	}
+	alert(alertText);
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<title>Monty Hall Game</title>
+
+<body>
+<h1>Let's play a game!</h1>
+<p>There are 3 doors below. Behind 1 door is a baby otter, behind the others, onions. 
+	Which door will you pick?
+</p>
+<p>Click on a door to open it!</p>
+
+
+<button type="button" id="Door 1" onClick="openFirstDoor('Door 1')">Door 1</button>
+<button type="button" id="Door 2" onClick="openFirstDoor('Door 2')">Door 2</button>
+<button type="button" id="Door 3" onClick="openFirstDoor('Door 3')">Door 3</button>
+
+<script>
+
+//There are 3 doors
+function openFirstDoor(firstChoice){
+	var door1=false, door2=false, door3=false;
+
+//Assign prize to one door
+	var prize=(Math.floor((Math.random()*3)+1));
+	if (prize<=1) door1=true;
+	else if (prize<=2) door2=true;
+	else if (prize<=3) door3=true;
+
+//Hide one door
+	alert ("Now I am going to hide 1 door");
+	
+	if (door1===false && firstChoice!="Door 1")document.getElementById("Door 1").style.display = 'none';
+	else if (door2===false && firstChoice!="Door 2")document.getElementById("Door 2").style.display = 'none';
+	else if (door3===false && firstChoice!="Door 3")document.getElementById("Door 3").style.display = 'none';
+	
+	if (firstChoice==="Door 1")firstChoice=door1;
+	else if (firstChoice==="Door 2")firstChoice=door2;
+	else if (firstChoice==="Door 3")firstChoice=door3;
+			
+//Ask for second door
+	alert ("Choose a new door or stick with your first choice!");
+
+	document.getElementById("Door 1").setAttribute("onclick", "openSecondDoor('Door 1', " + door1 + ", " + door2 + ", " + door3 +")");
+	document.getElementById("Door 2").setAttribute("onclick", "openSecondDoor('Door 2', " + door1 + ", " + door2 + ", " + door3 +")");
+	document.getElementById("Door 3").setAttribute("onclick", "openSecondDoor('Door 3', " + door1 + ", " + door2 + ", " + door3 +")");
+	}
+
+function openSecondDoor(secondChoice,door1,door2,door3){
+	if (secondChoice==="Door 1")secondChoice=door1;
+	else if (secondChoice==="Door 2")secondChoice=door2;
+	else if (secondChoice==="Door 3")secondChoice=door3;
+
+//Reveal winner
+	if (secondChoice===true) alert("You win!!!");
+	else alert("You lose :(");	
+	}
+	
+</script>
+</body>
+</html>
